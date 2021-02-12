@@ -50,6 +50,7 @@ print("Your Body Mass Index is : " + str(round(bmi,2))) # rounding the number to
 
 
 
+
 #f-string can be used to convert all the data type together to strings, to avoid repeating of type change for multiple elements
 
 score = 0
