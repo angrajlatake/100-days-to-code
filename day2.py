@@ -48,6 +48,16 @@ bmi = wt / (ht**2)
 
 print("Your Body Mass Index is : " + str(round(bmi,2))) # rounding the number to 2 digits after decimal
 
+if bmi < 18.5:
+    print("You are Underweight.")
+elif bmi < 25 :
+    print("You are Normal Weight.")
+elif bmi < 30 :
+    print("You are Overweight.")
+elif bmi < 35 :
+    print("You are Obese.")
+else :
+    print("You are Clinically Obese.")
 
 
 
