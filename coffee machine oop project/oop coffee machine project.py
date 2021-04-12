@@ -16,7 +16,7 @@ while is_on:
     choice = input(f"What would you like to have ({options}) : ")
 
     if choice == "off":
-        is_on = False
+        is_on = False 
 
     elif choice == "report":
         coffee_maker.report()
