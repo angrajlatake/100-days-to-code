@@ -19,4 +19,4 @@ while quiz.still_has_questions():
 
 print(f"\n\n\nYou have completed the quiz. \n Your final score is {quiz.score}/{quiz.question_number}")
 
-true
+# I have to learn to pull the questions from a site and use it anywhere
