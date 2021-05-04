@@ -10,7 +10,13 @@ class CarManager():
     def __init__(self):
         self.car_list = []
         self.car_speed = STARTING_MOVE_DISTANCE
+
+    def create_lines(self):
+        new_line = Turtle("square")
+
+
     def create_car(self):
+
         chance = random.randint(1,4)
         if chance == 1:
             new_car = Turtle("square")
@@ -29,3 +35,9 @@ class CarManager():
         for car in self.car_list:
             car.forward(self.car_speed)
 
+
+    def reset(self):
+        for car in self.car_list:
+            car.goto(1000,car.ycor())
+        self.car_list.clear()
+        self.car_speed = STARTING_MOVE_DISTANCE

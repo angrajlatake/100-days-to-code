@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CsvFileAttributes">
+    <option name="attributeMap">
+      <map>
+        <entry key="$USER_HOME$/Desktop/100 Days of Code - The Complete Python Pro Bootcamp for 2021/[TutsNode.com] - 100 Days of Code - The Complete Python Pro Bootcamp for 2021/25. Day 25 - Intermediate - Working with CSV Data and the Pandas Library/2.1 weather_data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/day-25- Pandas_turorial/weather_data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
