@@ -21,7 +21,7 @@ def create_turtle(guess_word,x,y):
 #read data from the csv
 data = pd.read_csv("50_states.csv")
 
-
+print(data["state"].tolist())
 #keep the score
 score = 0
 
@@ -45,11 +45,12 @@ while score < 50:
         score += 1
         guessed_states.append(guess)
 
-if score < 50 :
-    for state in data["state"].tolist():
-        if state not in guessed_states:
-            states_to_learn.append(state)
 
+if score < 50 :
+    # for state in data["state"].tolist():
+    #     if state not in guessed_states:
+    #         states_to_learn.append(state)
+    states_to_learn = [state for state in data["state"].tolist() if state not in guessed_states] #list comprehension
 list_to_learn = pd.DataFrame(states_to_learn)
 
 list_to_learn.to_csv("State to learn")
