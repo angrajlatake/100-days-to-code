@@ -1,7 +1,7 @@
 import tkinter.messagebox
 from tkinter import *
 import random
-
+import json
 import pyperclip
 
 # data = pd.DataFrame({"Email/Username" : [],
@@ -44,19 +44,55 @@ def add_password():
     email = email_input.get()
     # password information
     password = password_input.get()
-
+    #JSON format
+    new_data = {
+        website : {
+            "email" : email,
+            "password" : password,
+        }
+    }
     #Error message
     if website_input.index("end") == 0 or email_input.index("end") == 0 or password_input.index("end") == 0:
         tkinter.messagebox.showinfo(title="Field is empty", message="Please fill in all the details")
     else:
-        with open("manager.txt", mode="a") as manager:
-            manager.write(f"\n{email} | {password} | {website} ")
+        try:
+            with open("manager.json", mode="r") as manager:
+                data = json.load(manager)
+                data.update(new_data)
+        except FileNotFoundError:
+            with open("manager.json", "w") as manager:
+                json.dump(new_data, manager, indent = 4)
+        else:
+            data.update(new_data)
 
-        website_input.delete(0, END)
-        email_input.delete(0, END)
-        password_input.delete(0, END)
-        tkinter.messagebox.showinfo(title="", message="new details have been added to the file")
+            with open("manager.json", "w") as manager:
+                json.dump(data, manager, indent=4)
+        finally:
+            tkinter.messagebox.showinfo(title="", message="new details have been added to the file")
+            website_input.delete(0, END)
+            email_input.delete(0, END)
+            password_input.delete(0, END)
 
+# ---------------------------- SEARCH PASSWORD ------------------------------- #
+
+
+def search_password():
+    try:
+        with open("manager.json", "r") as manager:
+            data = json.load(manager)
+    except FileNotFoundError:
+        tkinter.messagebox.showinfo(title="Error",message=f"You haven't saved any passwords yet!")
+
+    else:
+        if website_input.get() in data:
+            email = data[website_input.get()]["email"]
+            password = data[website_input.get()]["password"]
+            pyperclip.copy(password)
+            tkinter.messagebox.showinfo(title=f"{website_input.get()}",
+                                        message=f"Email : {email} \n Password: {password} \n Password has been copied to clipboard")
+        else:
+            tkinter.messagebox.showinfo(title="Error",
+                                        message=f"{website_input.get()} is not saved in the manager")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -70,8 +106,8 @@ file = PhotoImage(file="logo.png")
 image = canvas.create_image(100, 100, image=file)
 canvas.grid(column=1, row=0)
 
-website_input = Entry(width=35)
-website_input.grid(column=1, row=2, columnspan=2)
+website_input = Entry(width=21)
+website_input.grid(column=1, row=2)
 website_input.focus()
 email_input = Entry(width=35)
 email_input.grid(column=1, row=3, columnspan=2)
@@ -89,5 +125,7 @@ pass_gen = Button(text="Generate Password", command=generate_password)
 pass_gen.grid(column=2, row=4)
 add_button = Button(text="Add", width=36, command=add_password)
 add_button.grid(column=1, row=5, columnspan=2)
+search_button = Button(width= 13,text="Search", command=search_password)
+search_button.grid(column= 2, row = 2)
 
 window.mainloop()

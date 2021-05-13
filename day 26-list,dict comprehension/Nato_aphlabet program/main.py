@@ -6,11 +6,20 @@ data = pd.read_csv("nato_phonetic_alphabet.csv")
 
 phonetic_dict = {row.letter:row.code for (index,row) in data.iterrows()}
 
-
-name = input("Please enter your name:").upper()
-
-list_of_phonetics = [phonetic_dict[item] for item in name]
+#the improvement was made to get any kind of input and not let the program end
 
 
-print(list_of_phonetics)
+def generate_phonetics():
+    name = input("Please enter your name:").upper()
+    try:
+        letter_of_phonetics = [phonetic_dict[item] for item in name]
+
+    except KeyError:
+        print("Sorry, only letter in alphabet please")
+        generate_phonetics()
+    else:
+        print(letter_of_phonetics)
+
+
+generate_phonetics()
 
