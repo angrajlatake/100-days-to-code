@@ -12,8 +12,8 @@ if dt.datetime.weekday(dt.datetime.now()) == 4:
 
 print(uni(quote))
 
-my_email = "lataketest@gmail.com"
-password = "Qwerty@987"
+my_email = "email"
+password = "password"
 with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
     connection.starttls()
     connection.login(user=my_email, password= password)
@@ -27,7 +27,7 @@ import smtplib
 import datetime as dt
 import random
 
-MY_EMAIL = "lataketest@gmail.com"
+MY_EMAIL = "email"
 MY_PASSWORD = "password" #replace the correct password
 
 now = dt.datetime.now()
