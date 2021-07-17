@@ -24,14 +24,16 @@ if day_tuple in new_dict:
     placeholder = "[NAME]"
     with open(chosen_letter, mode="r") as letter:
         content = letter.read()
+        print(content)
         new_content = content.replace(placeholder, name)
-    print(new_content)
+        print(new_content)
+
 
 # 4. Send the letter generated in step 3 to that person's email address.
 with smtplib.SMTP("smtp.gmail.com", port= 587) as connection:
     connection.starttls()
-    connection.login(user="email", password="password")#replace the correct password
-    connection.sendmail(from_addr="email", to_addrs=email, msg=f"Subject: Happy Birthday\n\n {new_content}")
+    connection.login(user="lataketest@gmail.com", password="Qwerty@987")#replace the correct password
+    connection.sendmail(from_addr="lataketest@gmail.com", to_addrs="angraj.latake@gmail.com", msg=f"Subject: Happy Birthday")
 
 
 

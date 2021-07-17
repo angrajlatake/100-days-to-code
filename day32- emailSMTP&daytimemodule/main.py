@@ -27,8 +27,8 @@ import smtplib
 import datetime as dt
 import random
 
-MY_EMAIL = "email"
-MY_PASSWORD = "password" #replace the correct password
+MY_EMAIL = "lataketest@gmail.com"
+MY_PASSWORD = "Qwerty@987" #replace the correct password
 
 now = dt.datetime.now()
 weekday = now.weekday()
@@ -36,8 +36,8 @@ if weekday == 4:
     with open("quotes.txt") as quote_file:
         all_quotes = quote_file.readlines()
         quote = random.choice(all_quotes)
+        print(quote)
 
-print(quote)
 
 with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
     connection.starttls()
